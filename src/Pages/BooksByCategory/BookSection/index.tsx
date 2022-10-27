@@ -38,12 +38,13 @@ const BookSection: React.FC<BookSectionProps> = ({ category }: BookSectionProps)
   }, [getBooks]);
 
   const handleScrollTopOnPageChange = () => {
-    const offsetTop = containerRef.current?.offsetTop;
-
-    window.scrollTo({
-      top: offsetTop,
-      behavior: 'smooth',
-    });
+    const offsetTop = containerRef.current?.offsetTop || 0;
+    if (Math.abs(window.pageYOffset - offsetTop) > 200) {
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth',
+      });
+    }
   };
 
   const filteredBooks = useMemo(() => {

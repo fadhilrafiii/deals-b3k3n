@@ -1,6 +1,12 @@
 import React from 'react';
 
-import ReactSelect, { GroupBase, OptionsOrGroups, Props, Theme } from 'react-select';
+import ReactSelect, {
+  CSSObjectWithLabel,
+  GroupBase,
+  OptionsOrGroups,
+  Props,
+  Theme,
+} from 'react-select';
 
 import { Colors } from 'Shared/Constants/Color';
 
@@ -14,45 +20,12 @@ interface SelectProps<Option = OptionType, Group extends GroupBase<Option> = Gro
   options: OptionsOrGroups<Option, Group>;
 }
 
-// const customStyles = {
-//   control: (base: CSSObjectWithLabel) => ({
-//     ...base,
-//     borderColor: Colors.Secondary,
-//     boxShadow: '0 0 0 1px ' + Colors.Secondary,
-//     ':hover': {
-//       ...base[':hover'],
-//       borderColor: Colors.Secondary,
-//     },
-//   }),
-//   menu: (base: CSSObjectWithLabel) => ({
-//     ...base,
-//     zIndex: 1000,
-//   }),
-//   option: (base: CSSObjectWithLabel, props: OptionProps) => ({
-//     ...base,
-//     backgroundColor: props.isSelected
-//       ? Colors.Secondary
-//       : props.isDisabled
-//       ? Colors.Grey
-//       : Colors.Primary,
-//     ':active': {
-//       ...base[':active'],
-//       backgroundColor: !props.isDisabled
-//         ? props.isSelected
-//           ? Colors.Secondary
-//           : Colors.Secondary30
-//         : undefined,
-//     },
-//     ':hover': {
-//       ...base[':hover'],
-//       backgroundColor: !props.isDisabled
-//         ? props.isSelected
-//           ? Colors.Secondary
-//           : Colors.Secondary30
-//         : undefined,
-//     },
-//   }),
-// };
+const customStyles = {
+  menu: (base: CSSObjectWithLabel) => ({
+    ...base,
+    zIndex: 1000,
+  }),
+};
 
 const Select: React.FC<SelectProps> = <T,>(props: SelectProps<T>) => {
   return (
@@ -65,6 +38,7 @@ const Select: React.FC<SelectProps> = <T,>(props: SelectProps<T>) => {
           primary: Colors.Secondary,
         },
       })}
+      styles={customStyles}
       {...props}
     />
   );
