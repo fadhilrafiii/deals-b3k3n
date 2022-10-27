@@ -1,0 +1,6 @@
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-l);
+  margin-right: calc(-1 * var(--space-l));
+}

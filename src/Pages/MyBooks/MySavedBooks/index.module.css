@@ -1,0 +1,25 @@
+.mySavedBooks {
+  position: relative;
+}
+
+.bookmarks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xxxxl) var(--space-l);
+}
+
+.pageSizeSelect {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  justify-content: flex-end;
+  margin-bottom: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .pageSizeSelect {
+    position: absolute;
+    top: -48px;
+    right: var(--space-xl);
+  }
+}

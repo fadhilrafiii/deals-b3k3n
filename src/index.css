@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Spacing */
+  --space-s: 4px;
+  --space-m: 8px;
+  --space-l: 12px;
+  --space-xl: 16px;
+  --space-xxl: 20px;
+  --space-xxxl: 24px;
+  --space-xxxxl: 32px;
+
+  /* Color */
+  --color-primary: white;
+  --color-secondary: rgb(105, 19, 216);
+  --color-grey-light: rgb(141, 141, 141);
+  --color-grey: rgb(95, 95, 95);
+  --color-grey-dark: rgb(72, 72, 72);
+  --color-black: rgb(26, 26, 26);
+  --color-skeleton: rgb(220, 220, 220);
+
+  /* Shadow */
+  --nav-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+  --box-shadow: 2px 2px 8px -1px rgba(0,0,0,.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Inter, sans-serif;
+  color: var(--color-grey-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+a {
+  text-decoration: none;
+}
+
+div, span, p {
+  font-size: 14px;
+}
+
+svg {
+  display: block;
+}
+
+.page-container {
+  box-sizing: content-box;
+  max-width: 1200px;
+  margin: auto;
+  padding: var(--space-xxxl) var(--space-xl);
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-grey-light);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-grey);
+  border-radius: 4px;
+  cursor: pointer;
+}

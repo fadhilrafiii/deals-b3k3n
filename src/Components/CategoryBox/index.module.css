@@ -1,0 +1,69 @@
+.categoryBox {
+  min-width: 105px;
+  flex: 0 1 min(calc(33.3333% - var(--space-l)), 160px);
+  position: relative;
+  height: 90px;
+  border-radius: 4px;
+  box-shadow: var(--box-shadow);
+  padding: var(--space-l);
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.categoryBox:hover {
+  transform: scale(1.05);
+}
+
+.categoryBox::after {
+  content: '';
+  width: 15%;
+  position: absolute;
+  left: var(--space-m);
+  bottom: var(--space-m);
+  height: 2px;
+  background-color: var(--color-primary);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 2;
+  transition: all .3s;
+}
+
+.categoryBox:hover::after, .categoryBox:active::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+.categoryBox > h4{
+  color: var(--color-primary);
+  text-shadow: 2px 2px 5px #494949;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.logoWrapper {
+  width: 20%;
+  height: 20%;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: var(--space-l);
+  right: var(--space-l);
+}
+
+@media (min-width: 768px) {
+  .categoryBox {
+    position: relative;
+    flex: 0 1 min(calc(20% - var(--space-l)));
+    min-width: 160px;
+    height: 120px;
+  }
+
+  .categoryBox > h4{
+    font-size: 16px;
+  }
+
+  .logoWrapper {
+    width: 25%;
+    height: 25%;
+  }
+}

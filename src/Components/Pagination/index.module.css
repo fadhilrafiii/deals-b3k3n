@@ -1,0 +1,48 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-m);
+}
+
+.pagination button {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-grey-light);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftArrow, .rightArrow {
+  background-color: var(--color-secondary) !important;
+}
+
+.leftArrow:disabled {
+  background-color: var(--color-grey-light) !important;
+}
+
+.leftArrow svg {
+  fill: var(--color-primary);
+}
+
+.rightArrow:disabled {
+  background-color: var(--color-grey-light) !important;
+}
+
+.rightArrow svg {
+  fill: var(--color-primary);
+}
+
+.activePage {
+  background-color: var(--color-secondary) !important;
+  color: var(--color-primary);
+}
