@@ -1,17 +1,15 @@
 import React from 'react';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 import { BookSection } from 'Shared/Types/Book';
 
 import styles from './index.module.css';
 
 const BookDetail = () => {
-  const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location);
-  if (!location.state) navigate('/books');
+  if (!location.state) return <Navigate to="/" />;
 
   return (
     <div className={styles.container}>

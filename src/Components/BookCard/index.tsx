@@ -32,10 +32,10 @@ const BookCard: React.FC<BookCardProps> = ({ book }: BookCardProps) => {
 
   return (
     <div className={styles.bookCard}>
+      <span className={styles.bookMark} role="button" onClick={actionClickBookmark}>
+        <BsFillBookmarkFill size={24} fill={isBookmarked ? Colors.Secondary : Colors.Grey} />
+      </span>
       <Link to={`/books/${book.id}`} state={book}>
-        <span className={styles.bookMark} role="button" onClick={actionClickBookmark}>
-          <BsFillBookmarkFill size={24} fill={isBookmarked ? Colors.Secondary : Colors.Grey} />
-        </span>
         <img alt={book.title} src={book.cover_url} />
         <h4 className={styles.bookName}>{book.title}</h4>
         <span className={styles.bookAuthors}>by {book.authors.join(' ')}</span>
