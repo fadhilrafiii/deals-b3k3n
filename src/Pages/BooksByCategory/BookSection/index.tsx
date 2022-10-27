@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { useSearchParams } from 'react-router-dom';
 
@@ -23,6 +23,7 @@ const BookSection: React.FC<BookSectionProps> = ({ category }: BookSectionProps)
   const [searchParams] = useSearchParams();
   const [books, setBooks] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const getBooks = useCallback(async () => {
     setIsLoading(true);
@@ -35,6 +36,15 @@ const BookSection: React.FC<BookSectionProps> = ({ category }: BookSectionProps)
   useEffect(() => {
     getBooks();
   }, [getBooks]);
+
+  const handleScrollTopOnPageChange = () => {
+    const offsetTop = containerRef.current?.offsetTop;
+
+    window.scrollTo({
+      top: offsetTop,
+      behavior: 'smooth',
+    });
+  };
 
   const filteredBooks = useMemo(() => {
     const searchKey = searchParams.get('search');
@@ -62,7 +72,7 @@ const BookSection: React.FC<BookSectionProps> = ({ category }: BookSectionProps)
   if (!isLoading && shownBooks.length === 0) return null;
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={containerRef}>
       <h2 className={styles.sectionTitle}>{category.name}</h2>
       <div className={styles.pageSizeSelect}>
         <span>books/page:</span>&nbsp;&nbsp;
@@ -82,7 +92,10 @@ const BookSection: React.FC<BookSectionProps> = ({ category }: BookSectionProps)
       <Pagination
         page={page}
         totalPages={Math.ceil(totalData / pageSize)}
-        handleChangePage={handleChangePage}
+        handleChangePage={(page: number) => {
+          handleChangePage(page);
+          handleScrollTopOnPageChange();
+        }}
       />
     </div>
   );

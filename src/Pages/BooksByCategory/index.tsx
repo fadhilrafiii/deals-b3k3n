@@ -94,7 +94,7 @@ const BooksByCategory = () => {
     );
 
   return (
-    <React.Fragment>
+    <div className={styles.container}>
       <h1 className={styles.sectionTitle}>Books by Category</h1>
       <Categories
         filter={filterCategories}
@@ -110,7 +110,7 @@ const BooksByCategory = () => {
           return <BookSection key={category.id} category={category} />;
         } else return null;
       })}
-    </React.Fragment>
+    </div>
   );
 };
 
