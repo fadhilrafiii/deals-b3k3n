@@ -8,6 +8,8 @@ import { getBooksAPI } from 'Clients/book';
 
 import { Book } from 'Shared/Types/Book';
 
+import styles from './index.module.css';
+
 const BookChoices = React.memo(() => {
   const [bookChoices, setBookChoices] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -37,9 +39,11 @@ const BookChoices = React.memo(() => {
 
   return (
     <Slider>
-      {bookChoices.map((book: Book) => (
-        <BookCard key={book.id} book={book} />
-      ))}
+      {bookChoices.length > 0 ? (
+        bookChoices.map((book: Book) => <BookCard key={book.id} book={book} />)
+      ) : (
+        <div className={styles.noData}>No data found!</div>
+      )}
     </Slider>
   );
 });

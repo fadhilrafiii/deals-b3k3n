@@ -39,8 +39,8 @@ const Categories = React.memo(() => {
   );
 
   useEffect(() => {
-    if (categories.length === 0) getBookCategories();
-  }, [getBookCategories, categories]);
+    getBookCategories();
+  }, [getBookCategories]);
 
   if (isCategoriesLoading)
     return (
@@ -51,15 +51,19 @@ const Categories = React.memo(() => {
 
   return (
     <div className={styles.categories}>
-      {categories.map((category: BookCategory, idx: number) => (
-        <CategoryBox
-          key={category.id}
-          category={category}
-          background={CONST_CATEGORIES_BACKGROUND[idx % categories.length]}
-          logo={CONST_CATEGORIES_LOGO[idx % categories.length]}
-          actionClickCategory={() => handleRedirectBooksPage(category.id)}
-        />
-      ))}
+      {categories.length > 0 ? (
+        categories.map((category: BookCategory, idx: number) => (
+          <CategoryBox
+            key={category.id}
+            category={category}
+            background={CONST_CATEGORIES_BACKGROUND[idx % categories.length]}
+            logo={CONST_CATEGORIES_LOGO[idx % categories.length]}
+            actionClickCategory={() => handleRedirectBooksPage(category.id)}
+          />
+        ))
+      ) : (
+        <div className={styles.noData}>No data found!</div>
+      )}
     </div>
   );
 });

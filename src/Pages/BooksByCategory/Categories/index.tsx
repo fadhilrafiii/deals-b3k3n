@@ -46,16 +46,20 @@ const Categories = ({ filter, handleToggleFilterCategory }: CategoriesProps) => 
 
   return (
     <div className={styles.categories}>
-      {categories.map((category: BookCategory, idx: number) => (
-        <CategoryBox
-          key={category.id}
-          category={category}
-          background={CONST_CATEGORIES_BACKGROUND[idx % categories.length]}
-          logo={CONST_CATEGORIES_LOGO[idx % categories.length]}
-          isActive={filter[category.id]}
-          actionClickCategory={() => handleToggleFilterCategory(category.id)}
-        />
-      ))}
+      {categories.length > 0 ? (
+        categories.map((category: BookCategory, idx: number) => (
+          <CategoryBox
+            key={category.id}
+            category={category}
+            background={CONST_CATEGORIES_BACKGROUND[idx % categories.length]}
+            logo={CONST_CATEGORIES_LOGO[idx % categories.length]}
+            isActive={filter[category.id]}
+            actionClickCategory={() => handleToggleFilterCategory(category.id)}
+          />
+        ))
+      ) : (
+        <div className={styles.noData}>No data found!</div>
+      )}
     </div>
   );
 };

@@ -86,18 +86,22 @@ const BookSection: React.FC<BookSectionProps> = ({ category }: BookSectionProps)
       <div className={styles.bookContainer}>
         {isLoading ? (
           <BookCardSkeleton numOfSkeletons={7} />
-        ) : (
+        ) : shownBooks.length > 0 ? (
           shownBooks.map((book: Book) => <BookCard key={book.id} book={book} />)
+        ) : (
+          <div className={styles.noData}>No data found!</div>
         )}
       </div>
-      <Pagination
-        page={page}
-        totalPages={Math.ceil(totalData / pageSize)}
-        handleChangePage={(page: number) => {
-          handleChangePage(page);
-          handleScrollTopOnPageChange();
-        }}
-      />
+      {filteredBooks.length > 0 && (
+        <Pagination
+          page={page}
+          totalPages={Math.ceil(totalData / pageSize)}
+          handleChangePage={(page: number) => {
+            handleChangePage(page);
+            handleScrollTopOnPageChange();
+          }}
+        />
+      )}
     </div>
   );
 };

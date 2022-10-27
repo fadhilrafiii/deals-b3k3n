@@ -61,6 +61,5 @@
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1"
-  },
-  "proxy": "https://asia-southeast2-sejutacita-app.cloudfunctions.net"
+  }
 }

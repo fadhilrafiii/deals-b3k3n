@@ -4,3 +4,10 @@
   gap: var(--space-l);
   margin-right: calc(-1 * var(--space-l));
 }
+
+.noData {
+  margin: 0 auto;
+  font-size: 16px;
+  padding: var(--space-xl) 0;
+  color: var(--color-grey);
+}

@@ -51,19 +51,23 @@ const MySavedBooks = () => {
         />
       </div>
       <div className={styles.bookmarks}>
-        {bookmarkBooksByPage.map((book: Book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
+        {bookmarkBooksByPage.length > 0 ? (
+          bookmarkBooksByPage.map((book: Book) => <BookCard key={book.id} book={book} />)
+        ) : (
+          <div className={styles.noData}>No data found!</div>
+        )}
       </div>
       <br />
-      <Pagination
-        page={pagination.page}
-        totalPages={Math.ceil(pagination.totalData / pagination.pageSize)}
-        handleChangePage={(page: number) => {
-          handleChangePage(page);
-          handleScrollTopOnPageChange();
-        }}
-      />
+      {bookmarkBooks.length > 0 && (
+        <Pagination
+          page={pagination.page}
+          totalPages={Math.ceil(pagination.totalData / pagination.pageSize)}
+          handleChangePage={(page: number) => {
+            handleChangePage(page);
+            handleScrollTopOnPageChange();
+          }}
+        />
+      )}
     </div>
   );
 };
