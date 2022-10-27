@@ -14,6 +14,10 @@
   transform: scale(1.05);
 }
 
+.categoryBoxActive {
+  transform: translateY(-8px);
+}
+
 .categoryBox::after {
   content: '';
   width: 15%;
@@ -29,6 +33,11 @@
 }
 
 .categoryBox:hover::after, .categoryBox:active::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+.categoryBoxActive::after {
   visibility: visible;
   opacity: 1;
 }

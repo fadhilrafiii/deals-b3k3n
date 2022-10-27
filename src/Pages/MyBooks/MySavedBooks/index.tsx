@@ -13,10 +13,10 @@ import { Book } from 'Shared/Types/Book';
 
 import styles from './index.module.css';
 
-const MySavedBooks = React.memo(() => {
+const MySavedBooks = () => {
   const { bookmarks } = useAppSelector(bookmarkSelector);
   const { pagination, handleChangePageSize, handleChangePage } = usePagination(
-    Object.keys(bookmarks),
+    bookmarks as unknown[],
   );
 
   const bookmarkBooks = useMemo(() => {
@@ -52,6 +52,6 @@ const MySavedBooks = React.memo(() => {
       />
     </div>
   );
-});
+};
 
 export default MySavedBooks;

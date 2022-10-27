@@ -32,7 +32,6 @@ export const usePagination = (data: unknown[]) => {
       pageSize: (pageSize as OptionType).value as number,
     }));
   };
-
   useEffect(() => {
     handleSyncPagination();
   }, [handleSyncPagination]);

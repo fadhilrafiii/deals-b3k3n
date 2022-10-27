@@ -1,0 +1,38 @@
+.container {
+  position: relative;
+  margin-bottom: calc(1.5 * var(--space-xxxxl));
+}
+
+.sectionTitle {
+  margin-bottom: var(--space-xl);
+}
+
+.bookContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-l);
+  margin-bottom: var(--space-xl);
+}
+
+.pageSizeSelect {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  justify-content: flex-end;
+  margin-bottom: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .pageSizeSelect {
+    position: absolute;
+    top: -8px;
+    right: var(--space-xl);
+  }
+}
+
+.noBooksFound {
+  font-size: 20px;
+  padding: var(--space-xxxxl) 0 calc(2 * var(--space-xxxl));
+  margin: 0 auto;
+  text-align: center;
+}

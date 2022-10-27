@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
 
-import { useNavigate } from 'react-router-dom';
-
 import CategoryBox from 'Components/CategoryBox';
 import CategoryBoxSkeleton from 'Components/Skeleton/CategoryBox';
 
@@ -20,8 +18,12 @@ import { CONST_CATEGORIES_BACKGROUND, CONST_CATEGORIES_LOGO } from './constants'
 
 import styles from './index.module.css';
 
-const Categories = React.memo(() => {
-  const navigate = useNavigate();
+interface CategoriesProps {
+  filter: Record<number, boolean>;
+  handleToggleFilterCategory: (categoryId: number) => void;
+}
+
+const Categories = ({ filter, handleToggleFilterCategory }: CategoriesProps) => {
   const dispatch = useAppDispatch();
   const { isCategoriesLoading, categories } = useAppSelector(bookCategoriesSelector);
 
@@ -30,13 +32,6 @@ const Categories = React.memo(() => {
     const data = await getBookCategoriesAPI().finally(() => dispatch(setCategoriesLoading(false)));
     dispatch(setCategories(data));
   }, [dispatch]);
-
-  const handleRedirectBooksPage = useCallback(
-    (categoryId: number) => {
-      navigate(`/books?category=${categoryId}`);
-    },
-    [navigate],
-  );
 
   useEffect(() => {
     if (categories.length === 0) getBookCategories();
@@ -57,11 +52,12 @@ const Categories = React.memo(() => {
           category={category}
           background={CONST_CATEGORIES_BACKGROUND[idx % categories.length]}
           logo={CONST_CATEGORIES_LOGO[idx % categories.length]}
-          actionClickCategory={() => handleRedirectBooksPage(category.id)}
+          isActive={filter[category.id]}
+          actionClickCategory={() => handleToggleFilterCategory(category.id)}
         />
       ))}
     </div>
   );
-});
+};
 
 export default Categories;
