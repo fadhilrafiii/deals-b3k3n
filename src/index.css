@@ -13,6 +13,8 @@
   /* Color */
   --color-primary: white;
   --color-secondary: rgb(105, 19, 216);
+  --color-secondary10: rgba(105, 19, 216, 0.1);
+  --color-secondary20: rgba(105, 19, 216, 0.2);
   --color-grey-light: rgb(141, 141, 141);
   --color-grey: rgb(95, 95, 95);
   --color-grey-dark: rgb(72, 72, 72);

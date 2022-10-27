@@ -59,9 +59,11 @@ const Navbar = () => {
           </div>
         </div>
         <div className={styles.rightNavbar}>
-          <div className={styles.searchbarWrapper}>
-            <Searchbar />
-          </div>
+          {location.pathname !== '/books' && (
+            <div className={styles.searchbarWrapper}>
+              <Searchbar />
+            </div>
+          )}
           <div className={styles.hamburgerWrapper} role="button" onClick={actionClickHamburger}>
             <Hamburger ref={hamburgerRef} />
           </div>

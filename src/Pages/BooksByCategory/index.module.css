@@ -10,7 +10,7 @@
 .bookContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-l);
+  gap: var(--space-xl);
   margin-bottom: var(--space-xl);
 }
 
