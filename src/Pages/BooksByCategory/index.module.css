@@ -36,3 +36,18 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.scrollToTopButton {
+  position: fixed;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+}
+
+.scrollToTopButton button {
+  border: none;
+  outline: none;
+  padding: var(--space-l);
+  box-shadow: var(--box-shadow);
+  background-color: var(--color-secondary);
+  border-radius: 100%;
+}

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+import { FaArrowUp } from '@react-icons/all-files/fa/FaArrowUp';
 import { useSearchParams } from 'react-router-dom';
 
 import Searchbar from 'Components/Searchbar';
@@ -14,6 +15,7 @@ import {
 
 import { getBookCategoriesAPI } from 'Clients/category';
 
+import { Colors } from 'Shared/Constants/Color';
 import { BookCategory } from 'Shared/Types/Book';
 
 import BookSection from './BookSection';
@@ -58,6 +60,13 @@ const BooksByCategory = () => {
   useEffect(() => {
     handleSyncFilterCategories();
   }, [handleSyncFilterCategories]);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   const handleToggleFilterCategory = useCallback(
     (categoryId: number) => {
@@ -110,6 +119,11 @@ const BooksByCategory = () => {
           return <BookSection key={category.id} category={category} />;
         } else return null;
       })}
+      <div className={styles.scrollToTopButton}>
+        <button onClick={handleScrollToTop}>
+          <FaArrowUp fill={Colors.Primary} size={20} />
+        </button>
+      </div>
     </div>
   );
 };
