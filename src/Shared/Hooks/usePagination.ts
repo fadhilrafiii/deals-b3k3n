@@ -28,6 +28,7 @@ export const usePagination = (data: unknown[]) => {
   const handleChangePageSize = (pageSize: SingleValue<unknown>) => {
     setPagination((prev: Record<string, number>) => ({
       ...prev,
+      page: 1,
       pageSize: (pageSize as OptionType).value as number,
     }));
   };

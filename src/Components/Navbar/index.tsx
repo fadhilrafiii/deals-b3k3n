@@ -15,7 +15,7 @@ const CONST_MENU_LIST: Menu[] = [
     path: '/',
   },
   {
-    name: 'All Books',
+    name: 'Books by Category',
     path: '/books',
   },
 ];
