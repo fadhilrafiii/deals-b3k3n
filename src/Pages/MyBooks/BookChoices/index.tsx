@@ -8,7 +8,7 @@ import { getBooksAPI } from 'Clients/book';
 
 import { Book } from 'Shared/Types/Book';
 
-const BookChoices = () => {
+const BookChoices = React.memo(() => {
   const [bookChoices, setBookChoices] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,6 +42,6 @@ const BookChoices = () => {
       ))}
     </Slider>
   );
-};
+});
 
 export default BookChoices;

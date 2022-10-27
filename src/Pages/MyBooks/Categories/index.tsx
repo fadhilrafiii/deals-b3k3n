@@ -18,7 +18,7 @@ import { CONST_CATEGORIES_BACKGROUND, CONST_CATEGORIES_LOGO } from './constants'
 
 import styles from './index.module.css';
 
-const Categories = () => {
+const Categories = React.memo(() => {
   const dispatch = useAppDispatch();
   const { isCategoriesLoading, categories } = useAppSelector(bookCategoriesSelector);
 
@@ -51,6 +51,6 @@ const Categories = () => {
       ))}
     </div>
   );
-};
+});
 
 export default Categories;
