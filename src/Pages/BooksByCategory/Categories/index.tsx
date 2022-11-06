@@ -1,16 +1,10 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 
 import CategoryBox from 'Components/CategoryBox';
 import CategoryBoxSkeleton from 'Components/Skeleton/CategoryBox';
 
-import { useAppDispatch, useAppSelector } from 'Redux/hooks';
-import {
-  bookCategoriesSelector,
-  setCategories,
-  setCategoriesLoading,
-} from 'Redux/Slices/bookCategorySlice';
-
-import { getBookCategoriesAPI } from 'Clients/category';
+import { useAppSelector } from 'Redux/hooks';
+import { bookCategoriesSelector } from 'Redux/Slices/bookCategorySlice';
 
 import { BookCategory } from 'Shared/Types/Book';
 
@@ -24,18 +18,7 @@ interface CategoriesProps {
 }
 
 const Categories = ({ filter, handleToggleFilterCategory }: CategoriesProps) => {
-  const dispatch = useAppDispatch();
   const { isCategoriesLoading, categories } = useAppSelector(bookCategoriesSelector);
-
-  const getBookCategories = useCallback(async () => {
-    dispatch(setCategoriesLoading(true));
-    const data = await getBookCategoriesAPI().finally(() => dispatch(setCategoriesLoading(false)));
-    dispatch(setCategories(data));
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (categories.length === 0) getBookCategories();
-  }, [getBookCategories, categories]);
 
   if (isCategoriesLoading)
     return (

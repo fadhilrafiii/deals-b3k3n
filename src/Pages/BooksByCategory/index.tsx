@@ -36,8 +36,8 @@ const BooksByCategory = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (categories.length === 0) getBookCategories();
-  }, [getBookCategories, categories]);
+    getBookCategories();
+  }, [getBookCategories]);
 
   const handleSyncFilterCategories = useCallback(() => {
     const categoryMap: Record<number, boolean> = {};
